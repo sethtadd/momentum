@@ -1,10 +1,10 @@
-# template README
+# README
 
 Description:
-Template description.
+A platformer game. The goal is to build up as much momentum (speed and power) as you can in order to complete levels.
 
 Usage:
-Template usage.
+For fun!
 
 TODO:
 - item 1.

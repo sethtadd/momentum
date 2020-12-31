@@ -2,10 +2,10 @@
 
 # file names
 EXE    := hellomake
-CC     := gcc
+CC     := g++
 CFLAGS := 
-DEPS   := hellomake.h
-OBJ    := hellomake.o hellofunc.o
+DEPS   := hellomake.hpp
+OBJ    := hellomake.o hellofunc.o glad.o
 
 # directories
 SRCDIR := src
@@ -31,7 +31,7 @@ else
         LIBS     = 
     endif
     ifeq ($(UNAME_S), Darwin) # MacOS
-        LIBS     = 
+        LIBS     = -L/Users/sethtaddiken/Desktop/momentum/lib -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
     endif
     CLEANEXE = rm -v $(EXE) # for both Linux and MacOS
 endif
@@ -39,8 +39,14 @@ endif
 # rules
 make: $(OBJ)
 	@mkdir -p $(BINDIR)
-	$(CC) -o $(EXE) $^ $(CFLAGS)
+	$(CC) -o $(EXE) $^ $(CFLAGS) $(LIBS)
 
+# for .cpp
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp $(DEPS)
+	@mkdir -p $(OBJDIR)
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+# for .c
 $(OBJDIR)/%.o: $(SRCDIR)/%.c $(DEPS)
 	@mkdir -p $(OBJDIR)
 	$(CC) -c -o $@ $< $(CFLAGS)

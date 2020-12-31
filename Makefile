@@ -1,15 +1,16 @@
-# template makefile
+# momentum makefile
 
 # file names
-EXE    := hellomake
+EXE    := momentum
 CC     := g++
 CFLAGS := 
-DEPS   := hellomake.hpp
-OBJ    := hellomake.o hellofunc.o glad.o
+DEPS   := helperFunctions.hpp
+OBJ    := main.o helperFunctions.o glad.o
 
 # directories
 SRCDIR := src
 INCDIR := include
+LIBDIR := lib
 OBJDIR := build
 BINDIR := bin
 
@@ -31,7 +32,7 @@ else
         LIBS     = 
     endif
     ifeq ($(UNAME_S), Darwin) # MacOS
-        LIBS     = -L/Users/sethtaddiken/Desktop/momentum/lib -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
+        LIBS     = -lglfw3 -framework Cocoa -framework OpenGL -framework IOKit
     endif
     CLEANEXE = rm -v $(EXE) # for both Linux and MacOS
 endif
@@ -39,7 +40,7 @@ endif
 # rules
 make: $(OBJ)
 	@mkdir -p $(BINDIR)
-	$(CC) -o $(EXE) $^ $(CFLAGS) $(LIBS)
+	$(CC) -o $(EXE) $^ $(CFLAGS) -L./$(LIBDIR) $(LIBS)
 
 # for .cpp
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp $(DEPS)

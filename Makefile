@@ -3,8 +3,8 @@
 # file names
 EXE    := momentum
 CFLAGS := 
-DEPS   := helperFunctions.hpp
-OBJ    := main.o helperFunctions.o glad.o
+DEPS   := App.hpp
+OBJ    := main.o App.o glad.o
 
 # directories
 SRCDIR := src

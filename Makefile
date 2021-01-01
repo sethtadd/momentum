@@ -2,7 +2,6 @@
 
 # file names
 EXE    := momentum
-CC     := g++
 CFLAGS := 
 DEPS   := helperFunctions.hpp
 OBJ    := main.o helperFunctions.o glad.o
@@ -40,17 +39,23 @@ endif
 # rules
 make: $(OBJ)
 	@mkdir -p $(BINDIR)
-	$(CC) -o $(EXE) $^ $(CFLAGS) -L./$(LIBDIR) $(LIBS)
+	g++ -o $(EXE) $^ $(CFLAGS) -L./$(LIBDIR) $(LIBS)
+
+# Windows subsystem for Linux
+subsys: $(OBJ)
+	echo $(UNAME_S)
+	echo $(OS)
+    # do your stuff joey
 
 # for .cpp
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp $(DEPS)
 	@mkdir -p $(OBJDIR)
-	$(CC) -c -o $@ $< $(CFLAGS)
+	g++ -c -o $@ $< $(CFLAGS)
 
 # for .c
 $(OBJDIR)/%.o: $(SRCDIR)/%.c $(DEPS)
 	@mkdir -p $(OBJDIR)
-	$(CC) -c -o $@ $< $(CFLAGS)
+	gcc -c -o $@ $< $(CFLAGS)
 
 clean:
 	rm -v $(OBJ)

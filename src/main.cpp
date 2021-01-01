@@ -8,7 +8,8 @@
 
 #include "helperFunctions.hpp"
 
-int main() {
+int main()
+{
 
   GLFWwindow* window = windowInit(800, 600, "Momentum");
   if (window == nullptr) printf("Failed to initialize window");
@@ -28,6 +29,8 @@ int main() {
   }
 
   glfwTerminate();
+
+  printf("GLFW terminated\n");
 
   return 0;
 }

@@ -41,14 +41,6 @@ make: $(OBJ)
 	@mkdir -p $(BINDIR)
 	g++ -o $(EXE) $^ $(CFLAGS) -L./$(LIBDIR) $(LIBS)
 
-# Windows subsystem for Linux
-subsys: $(OBJ)
-	echo $(UNAME_S)
-	echo $(OS)
-    # --------------------------------------
-    # --------- do your stuff joey ---------
-    # --------------------------------------
-
 # for .cpp
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp $(DEPS)
 	@mkdir -p $(OBJDIR)

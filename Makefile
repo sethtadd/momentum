@@ -45,7 +45,9 @@ make: $(OBJ)
 subsys: $(OBJ)
 	echo $(UNAME_S)
 	echo $(OS)
-    # do your stuff joey
+    # --------------------------------------
+    # --------- do your stuff joey ---------
+    # --------------------------------------
 
 # for .cpp
 $(OBJDIR)/%.o: $(SRCDIR)/%.cpp $(DEPS)
